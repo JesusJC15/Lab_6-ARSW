@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blueprints</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" 
+        href="/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+    <h1>Blueprints</h1>
+
+    <label for="authorInput">Author:</label>
+    <input type="text" id="authorInput" placeholder="Enter author name">
+    <button id="getBlueprintsButton">Get blueprints</button>
+
+    <div id="selectedAuthor">
+        <h2>Selected Author: <span id="authorName"></span></h2>
+    </div>
+
+    <table id="blueprintsTable" border="2">
+        <thead>
+            <tr>
+                <th>Blueprint Name</th>
+                <th>Number of points</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <div id="totalPoints">
+        <h3>Total user points: <span id="pointsSum"></span></h3>
+    </div>
+</body>
+</html>
