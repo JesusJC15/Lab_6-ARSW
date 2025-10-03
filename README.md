@@ -23,7 +23,7 @@
 
 1. Trabaje sobre la base del proyecto anterior (en el que se hizo el API REST).
 
-![](img/lab/1.png)
+    ![](img/lab/1.png)
 
 2. Incluya dentro de las dependencias de Maven los 'webjars' de jQuery y Bootstrap (esto permite tener localmente dichas librerías de JavaScript al momento de construír el proyecto):
 
@@ -47,7 +47,7 @@
 
     ```
 
-![](img/lab/2.png)
+    ![](img/lab/2.png)
 
 ## Front-End - Vistas
 
@@ -57,13 +57,13 @@
     src/main/resources/static
     ```
 
-![](img/lab/3.png)
+    ![](img/lab/3.png)
 
 4. Cree, en el directorio anterior, la página index.html, sólo con lo básico: título, campo para la captura del autor, botón de 'Get blueprints', campo <div> donde se mostrará el nombre del autor seleccionado, [la tabla HTML](https://www.w3schools.com/html/html_tables.asp) donde se mostrará el listado de planos (con sólo los encabezados), y un campo <div> donde se mostrará el total de puntos de los planos del autor. Recuerde asociarle identificadores a dichos componentes para facilitar su búsqueda mediante selectores.
 
-![](img/lab/4.png)
+    ![](img/lab/4.png)
 
-![](img/lab/5.png)
+    ![](img/lab/5.png)
 
 5. En el elemento \<head\> de la página, agregue las referencia a las librerías de jQuery, Bootstrap y a la hoja de estilos de Bootstrap. 
     ```html
@@ -79,7 +79,7 @@
     </head>
     ```
     
-![](img/lab/6.png)
+    ![](img/lab/6.png)
 
 5. Suba la aplicación (mvn spring-boot:run), y rectifique:
     1. Que la página sea accesible desde:
@@ -97,28 +97,28 @@
 
 1. Ahora, va a crear un Módulo JavaScript que, a manera de controlador, mantenga los estados y ofrezca las operaciones requeridas por la vista. Para esto tenga en cuenta el [patrón Módulo de JavaScript](https://toddmotto.com/mastering-the-module-pattern/), y cree un módulo en la ruta static/js/app.js .
 
-![](img/lab/9.png)
-
-
+    ![](img/lab/9.png)
 
 2. Copie el módulo provisto (apimock.js) en la misma ruta del módulo antes creado. En éste agréguele más planos (con más puntos) a los autores 'quemados' en el código.
 
-![](img/lab/11.png)
+    ![](img/lab/11.png)
 
 3. Agregue la importación de los dos nuevos módulos a la página HTML (después de las importaciones de las librerías de jQuery y Bootstrap):
     ```html
     <script src="js/apimock.js"></script>
     <script src="js/app.js"></script>
     ```
+    ![](img/lab/12.png)
 
-3. Haga que el módulo antes creado mantenga de forma privada:
+4. Haga que el módulo antes creado mantenga de forma privada:
     * El nombre del autor seleccionado.
     * El listado de nombre y tamaño de los planos del autor seleccionado. Es decir, una lista objetos, donde cada objeto tendrá dos propiedades: nombre de plano, y número de puntos del plano.
 
     Junto con una operación pública que permita cambiar el nombre del autor actualmente seleccionado.
 
+    ![](img/lab/13.png)
 
-4. Agregue al módulo 'app.js' una operación pública que permita actualizar el listado de los planos, a partir del nombre de su autor (dado como parámetro). Para hacer esto, dicha operación debe invocar la operación 'getBlueprintsByAuthor' del módulo 'apimock' provisto, enviándole como _callback_ una función que:
+5. Agregue al módulo 'app.js' una operación pública que permita actualizar el listado de los planos, a partir del nombre de su autor (dado como parámetro). Para hacer esto, dicha operación debe invocar la operación 'getBlueprintsByAuthor' del módulo 'apimock' provisto, enviándole como _callback_ una función que:
 
     * Tome el listado de los planos, y le aplique una función 'map' que convierta sus elementos a objetos con sólo el nombre y el número de puntos.
 
@@ -126,9 +126,18 @@
 
     * Sobre cualquiera de los dos listados (el original, o el transformado mediante 'map'), aplique un 'reduce' que calcule el número de puntos. Con este valor, use jQuery para actualizar el campo correspondiente dentro del DOM.
 
-5. Asocie la operación antes creada (la de app.js) al evento 'on-click' del botón de consulta de la página.
+    ![](img/lab/14.png)
+    ![](img/lab/15.png)
 
-6. Verifique el funcionamiento de la aplicación. Inicie el servidor, abra la aplicación HTML5/JavaScript, y rectifique que al ingresar un usuario existente, se cargue el listado del mismo.
+6. Asocie la operación antes creada (la de app.js) al evento 'on-click' del botón de consulta de la página.
+
+    ![](img/lab/16.png)
+
+7. Verifique el funcionamiento de la aplicación. Inicie el servidor, abra la aplicación HTML5/JavaScript, y rectifique que al ingresar un usuario existente, se cargue el listado del mismo.
+
+    ![](img/lab/17.png)
+    ![](img/lab/18.png)
+    ![](img/lab/19.png)
 
 ## Para la próxima semana
 

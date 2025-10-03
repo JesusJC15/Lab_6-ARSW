@@ -36,5 +36,20 @@
     <div id="totalPoints">
         <h3>Total user points: <span id="pointsSum"></span></h3>
     </div>
+
+    <script src="js/apimock.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#getBlueprintsButton").click(function () {
+                let author = $("#authorInput").val();
+                if (author) {
+                    AppController.updateBlueprintsFromAuthor(author);
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>

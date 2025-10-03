@@ -1,26 +1,65 @@
 const AppController = (function () {
-    let state = {};
+    
+    let author = null;
+    let blueprints = [];
 
-    function updateState(key, value) {
-        state[key] = value;
+    function setBlueprints(bps) {
+        blueprints = bps.map(bp => ({
+            name: bp.name,
+            pointsCount: bp.points.length
+        }));
     }
 
-    function getState(key) {
-        return state[key];
-    }
+    function updateTable() {
+        let tbody = $("#blueprintsTable tbody");
+        tbody.empty();
 
+        blueprints.forEach(bp => {
+            let row = $("<tr></tr>");
+            row.append(`<td>${bp.name}</td>`);
+            row.append(`<td>${bp.pointsCount}</td>`);
+            tbody.append(row);
+        });
+
+        let total = blueprints.reduce((sum, bp) => sum + bp.pointsCount, 0);
+        $("#pointsSum").text(total);
+    }
+    
     return {
-        setState: function (key, value) {
-            updateState(key, value);
+        
+        setAuthor: function (newAuthor) {
+            author = newAuthor;
         },
-        getState: function (key) {
-            return getState(key);
+
+        getAuthor: function () {
+            return author;
         },
-        resetState: function () {
-            state = {};
+
+        setBlueprints: function (bps) {
+            setBlueprints(bps);
         },
-        getAllState: function () {
-            return { ...state };
+
+        getBlueprints: function () {
+            return [...blueprints]; 
+        },
+
+        getTotalPoints: function () {
+            return blueprints.reduce((sum, bp) => sum + bp.pointsCount, 0);
+        },
+
+        updateBlueprintsFromAuthor: function (authname) {
+            author = authname;
+            $("#authorName").text(authname); 
+
+            apimock.getBlueprintsByAuthor(authname, function (bps) {
+                setBlueprints(bps); 
+                updateTable();      
+            });
+        },
+
+        reset: function () {
+            author = null;
+            blueprints = [];
         }
     };
 })();
